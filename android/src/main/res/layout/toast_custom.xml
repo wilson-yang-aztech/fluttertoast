@@ -20,5 +20,6 @@
         android:paddingEnd="16dp"
         android:paddingBottom="10dp"
         android:textColor="#FFFFFF"
+        android:textSize="14dp"
         tools:text="Toast should be short." />
 </FrameLayout>
