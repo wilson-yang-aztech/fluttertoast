@@ -65,6 +65,12 @@ class Fluttertoast {
     _sFontSizeUnit = unit;
   }
 
+  /// 仅android使用
+  static ToastGravity? _sGravity;
+  static setGlobalToastGravity(ToastGravity gravity) {
+    _sGravity = gravity;
+  }
+
   /// Show the [msg] via native platform's toast.
   ///
   /// On Android uses Toast.
@@ -108,6 +114,16 @@ class Fluttertoast {
       gravityToast = "center";
     } else {
       gravityToast = "bottom";
+    }
+
+    if (Platform.isAndroid && _sGravity != null) {// android
+      if (_sGravity == ToastGravity.TOP) {
+        gravityToast = "top";
+      } else if (_sGravity == ToastGravity.CENTER) {
+        gravityToast = "center";
+      } else {
+        gravityToast = "bottom";
+      }
     }
 
 //lines from 78 to 97 have been changed in order to solve issue #328
